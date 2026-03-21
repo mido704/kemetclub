@@ -1,0 +1,316 @@
+/* ─────────────────────────────────────────────
+   src/styles/globals.css
+   Kemet Club Design System — Black × Gold
+───────────────────────────────────────────── */
+
+/* ── CSS Variables ─────────────────────────── */
+:root {
+  --gold:            #D4AF37;
+  --gold-light:      #F0D060;
+  --gold-dark:       #A08020;
+  --gold-glow:       rgba(212, 175, 55, 0.25);
+  --gold-glow-strong:rgba(212, 175, 55, 0.55);
+  --black:           #000000;
+  --black-soft:      #0A0A0A;
+  --black-mid:       #111111;
+  --black-card:      #161616;
+  --white:           #FFFFFF;
+  --white-text:      rgba(255, 255, 255, 0.85);
+  --white-muted:     rgba(255, 255, 255, 0.45);
+  --error:           #ff6b6b;
+  --success:         #4caf87;
+  --radius-card:     20px;
+  --radius-sm:       8px;
+  --ease:            cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --transition:      0.3s var(--ease);
+}
+
+/* ── Reset ─────────────────────────────────── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body {
+  background: var(--black);
+  color: var(--white-text);
+  font-family: 'Cairo', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── Typography ────────────────────────────── */
+.font-serif  { font-family: 'Cormorant Garamond', serif; }
+.font-sans   { font-family: 'Cairo', sans-serif; }
+h1, h2, h3, .heading { font-family: 'Cormorant Garamond', serif; font-weight: 300; }
+
+/* ── Card ──────────────────────────────────── */
+.card {
+  background:    var(--black-card);
+  border:        1px solid var(--gold);
+  border-radius: var(--radius-card);
+  box-shadow:    0 0 20px rgba(212, 175, 55, 0.3);
+  transition:    box-shadow var(--transition), transform var(--transition);
+  overflow:      hidden;
+  padding:       15px;
+  margin:        20px 0;
+  color:         var(--gold);
+}
+.card:hover {
+  box-shadow:  0 0 40px rgba(212, 175, 55, 0.55), 0 8px 32px rgba(0,0,0,0.6);
+  transform:   translateY(-3px);
+}
+.card video, .card img {
+  width:         100%;
+  border-radius: var(--radius-card);
+  display:       block;
+}
+
+/* ── Glassmorphism Card ────────────────────── */
+.glass {
+  background:    rgba(22, 22, 22, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border:        1px solid rgba(212, 175, 55, 0.2);
+  border-radius: var(--radius-card);
+}
+
+/* ── Buttons ───────────────────────────────── */
+.btn {
+  display:         inline-flex;
+  align-items:     center;
+  justify-content: center;
+  gap:             8px;
+  font-family:     'Cairo', sans-serif;
+  font-weight:     700;
+  letter-spacing:  0.12em;
+  border:          none;
+  cursor:          pointer;
+  transition:      all var(--transition);
+  white-space:     nowrap;
+}
+.btn-gold {
+  background:  linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark));
+  color:       var(--black);
+  padding:     14px 36px;
+  font-size:   0.85rem;
+}
+.btn-gold:hover {
+  transform:   translateY(-2px);
+  box-shadow:  0 8px 30px var(--gold-glow-strong);
+}
+.btn-outline {
+  background:  transparent;
+  color:       var(--gold);
+  border:      1px solid rgba(212,175,55,0.4);
+  padding:     12px 28px;
+  font-size:   0.82rem;
+}
+.btn-outline:hover {
+  background:  rgba(212,175,55,0.08);
+  border-color: var(--gold);
+}
+.btn-ghost {
+  background:    rgba(0,0,0,0.5);
+  color:         var(--white-muted);
+  border:        1px solid rgba(212,175,55,0.2);
+  padding:       8px 16px;
+  font-size:     0.75rem;
+  backdrop-filter: blur(8px);
+}
+.btn-ghost:hover, .btn-ghost.active {
+  color:         var(--gold);
+  border-color:  var(--gold);
+  background:    rgba(212,175,55,0.1);
+}
+.btn-icon {
+  width:           44px;
+  height:          44px;
+  border-radius:   50%;
+  background:      rgba(0,0,0,0.6);
+  border:          1px solid rgba(212,175,55,0.25);
+  color:           var(--white-muted);
+  font-size:       1.1rem;
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  cursor:          pointer;
+  transition:      all var(--transition);
+  backdrop-filter: blur(8px);
+}
+.btn-icon:hover, .btn-icon.liked {
+  color:       var(--gold);
+  border-color: var(--gold);
+  background:  rgba(212,175,55,0.1);
+}
+.btn-icon.liked { color: #ff6b6b; border-color: #ff6b6b; }
+
+/* ── Inputs ────────────────────────────────── */
+.input {
+  width:       100%;
+  background:  rgba(255,255,255,0.04);
+  border:      1px solid rgba(255,255,255,0.1);
+  color:       var(--white);
+  padding:     14px 18px;
+  font-family: 'Cairo', sans-serif;
+  font-size:   0.85rem;
+  border-radius: var(--radius-sm);
+  outline:     none;
+  transition:  border-color var(--transition);
+  margin-bottom: 14px;
+}
+.input:focus { border-color: rgba(212,175,55,0.5); }
+.input::placeholder { color: var(--white-muted); }
+textarea.input { resize: vertical; min-height: 90px; line-height: 1.7; }
+
+/* ── Feed ──────────────────────────────────── */
+.feed-card {
+  position:      relative;
+  overflow:      hidden;
+  background:    var(--black);
+  border:        1px solid var(--gold);
+  border-radius: var(--radius-card);
+  box-shadow:    0 0 20px rgba(212, 175, 55, 0.3);
+  aspect-ratio:  4/5;
+  transition:    transform var(--transition), box-shadow var(--transition);
+}
+.feed-card:hover {
+  transform:   translateY(-4px) scale(1.01);
+  box-shadow:  0 0 40px rgba(212,175,55,0.55), 0 8px 32px rgba(0,0,0,0.6);
+}
+.feed-card img, .feed-card video {
+  width:         100%;
+  height:        100%;
+  object-fit:    cover;
+  border-radius: var(--radius-card);
+  transition:    transform 0.6s var(--ease);
+}
+.feed-card:hover img, .feed-card:hover video { transform: scale(1.04); }
+
+/* ── TikTok-style fullscreen feed ─────────── */
+.tiktok-feed {
+  height:           100dvh;
+  overflow-y:       scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior:  smooth;
+  overscroll-behavior: contain;
+}
+.tiktok-slide {
+  height:          100dvh;
+  scroll-snap-align: start;
+  position:        relative;
+  overflow:        hidden;
+}
+.tiktok-slide video {
+  width:      100%;
+  height:     100%;
+  object-fit: cover;
+}
+.tiktok-actions {
+  position: absolute;
+  right: 16px;
+  bottom: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+.tiktok-info {
+  position: absolute;
+  bottom: 80px;
+  left: 16px;
+  right: 80px;
+}
+
+/* ── Gold Divider ──────────────────────────── */
+.divider {
+  height:     1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+  opacity:    0.25;
+  margin:     28px 0;
+}
+
+/* ── Eyebrow label ─────────────────────────── */
+.eyebrow {
+  font-size:      0.68rem;
+  letter-spacing: 0.35em;
+  color:          var(--gold);
+  font-weight:    400;
+  text-transform: uppercase;
+}
+
+/* ── Badge ─────────────────────────────────── */
+.badge {
+  font-size:      0.58rem;
+  letter-spacing: 0.15em;
+  padding:        4px 12px;
+  font-weight:    700;
+  text-transform: uppercase;
+}
+.badge-gold {
+  background:  linear-gradient(135deg, var(--gold), var(--gold-dark));
+  color:       var(--black);
+}
+.badge-outline {
+  border:  1px solid rgba(212,175,55,0.35);
+  color:   var(--gold);
+  background: rgba(212,175,55,0.08);
+}
+
+/* ── Toast ─────────────────────────────────── */
+.toast {
+  position:    fixed;
+  bottom:      32px;
+  left:        50%;
+  transform:   translateX(-50%);
+  padding:     14px 28px;
+  font-family: 'Cairo', sans-serif;
+  font-size:   0.82rem;
+  letter-spacing: 0.08em;
+  z-index:     9000;
+  pointer-events: none;
+  border-radius: var(--radius-sm);
+  animation: toastIn 0.3s var(--ease);
+}
+.toast-gold  { background: #0a1400; border: 1px solid rgba(212,175,55,0.4); color: var(--gold); }
+.toast-error { background: #1a0000; border: 1px solid rgba(255,107,107,0.4); color: #ff8a8a; }
+@keyframes toastIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(12px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+/* ── Skeleton ──────────────────────────────── */
+.skeleton {
+  background:      linear-gradient(90deg, var(--black-card) 0%, rgba(212,175,55,0.07) 50%, var(--black-card) 100%);
+  background-size: 200% 100%;
+  animation:       skelShimmer 1.5s ease-in-out infinite;
+  border-radius:   var(--radius-card);
+}
+@keyframes skelShimmer {
+  from { background-position: 200% 0; }
+  to   { background-position: -200% 0; }
+}
+
+/* ── Animations ────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes crownFloat {
+  0%,100% { transform: translateY(0) rotate(-3deg); }
+  50%     { transform: translateY(-8px) rotate(3deg); }
+}
+.animate-fade-up  { animation: fadeUp  0.7s var(--ease) both; }
+.animate-fade-in  { animation: fadeIn  0.5s ease both; }
+
+/* ── Scrollbar ─────────────────────────────── */
+::-webkit-scrollbar       { width: 4px; }
+::-webkit-scrollbar-track { background: var(--black); }
+::-webkit-scrollbar-thumb { background: rgba(212,175,55,0.3); border-radius: 2px; }
+
+/* ── Responsive ────────────────────────────── */
+@media (max-width: 768px) {
+  .card { margin: 12px 0; padding: 12px; }
+  .btn-gold, .btn-outline { padding: 12px 24px; font-size: 0.8rem; }
+}
